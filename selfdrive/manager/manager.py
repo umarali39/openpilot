@@ -42,6 +42,7 @@ def manager_init() -> None:
     ("OpenpilotEnabledToggle", "1"),
     ("ManualParkingBrakeSNGToggle", "0"),
     ("DisableDisengageOnGasToggle", "0"),
+    ("FirmwareQueryDelay", "0"),
   ]
   if not PC:
     default_params.append(("LastUpdateTime", datetime.datetime.utcnow().isoformat().encode('utf8')))

@@ -1,3 +1,11 @@
+2022-02-22
+==========
+* Firmware query delay toggle / @martinl
+* Global SNG distance in meters / @martinl
+* FPv2 updates
+  * 2016 Outback 2.5i - AUDM / @marls
+  * 2018 Crosstrek 2.0 - AUDM / @marls
+
 2022-02-20
 ==========
 * Merge upstream (0.8.13) / @martinl

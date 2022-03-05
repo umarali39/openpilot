@@ -299,11 +299,12 @@ FW_VERSIONS = {
     ],
     (Ecu.engine, 0x7e0, None): [
       b'\xb5\"@p\a',
-      b'\x01EB4S100C\x00\x00\x00\x00\x00\x00\x00\x00',
+      b'\xb5"@P\x07',
     ],
     (Ecu.transmission, 0x7e1, None): [
       b'\xbc\xf2\x00\x81\x00',
       b'\xf1\x00\xa4\x10@',
+      b'\xbc\xf2\x00\x80\x00',
     ],
   },
   CAR.LEVORG_PREGLOBAL: {

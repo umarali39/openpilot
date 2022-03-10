@@ -1,3 +1,9 @@
+2022-03-10
+==========
+* FPv2 updates
+  * 2019 Impreza Sport - UDM / @Milkdud
+  * 2018 Subaru Legacy - UDM / @Hassan
+
 2022-02-22
 ==========
 * Firmware query delay toggle / @martinl

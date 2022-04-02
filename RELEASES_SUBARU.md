@@ -1,8 +1,13 @@
+2022-04-02
+==========
+* FPv2 updates
+  * 2018 Outback - UDM / @TaylorH
+
 2022-03-10
 ==========
 * FPv2 updates
   * 2019 Impreza Sport - UDM / @Milkdud
-  * 2018 Subaru Legacy - UDM / @Hassan
+  * 2018 Legacy - UDM / @Hassan
 
 2022-02-22
 ==========
@@ -40,7 +45,7 @@
 2022-01-26
 ==========
 * FPv2 updates
-  * 2018 Subaru Legacy - UDM / @Hassan
+  * 2018 Legacy - UDM / @Hassan
 
 2021-12-28
 ==========

@@ -66,15 +66,15 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
       "../assets/offroad/icon_road.png",
     },
     {
+      "DisengageOnAccelerator",
+      "Disengage On Accelerator Pedal",
+      "When enabled, pressing the accelerator pedal will disengage openpilot.",
+      "../assets/offroad/icon_disengage_on_accelerator.svg",
+    },
+    {
       "ManualParkingBrakeSNGToggle",
       "Subaru Manual PB Stop and Go",
       "Experimental feature to enable stop and go for Subaru Global models with manual handbrake. Models with electric parking brake should keep this disabled.",
-      "../assets/offroad/icon_speed_limit.png",
-    },
-    {
-      "DisableDisengageOnGasToggle",
-      "Disable Disengage On Gas Press",
-      "Unsafe option to disable openpilot disengage on gas pedal press. For use only for WIP models which do not support disengage on gas pedal press yet",
       "../assets/offroad/icon_speed_limit.png",
     },
     {
@@ -214,10 +214,10 @@ void DevicePanel::updateCalibDescription() {
 }
 
 void DevicePanel::reboot() {
-  if (uiState()->status == UIStatus::STATUS_DISENGAGED) {
+  if (!uiState()->engaged()) {
     if (ConfirmationDialog::confirm("Are you sure you want to reboot?", this)) {
       // Check engaged again in case it changed while the dialog was open
-      if (uiState()->status == UIStatus::STATUS_DISENGAGED) {
+      if (!uiState()->engaged()) {
         Params().putBool("DoReboot", true);
       }
     }
@@ -227,10 +227,10 @@ void DevicePanel::reboot() {
 }
 
 void DevicePanel::poweroff() {
-  if (uiState()->status == UIStatus::STATUS_DISENGAGED) {
+  if (!uiState()->engaged()) {
     if (ConfirmationDialog::confirm("Are you sure you want to power off?", this)) {
       // Check engaged again in case it changed while the dialog was open
-      if (uiState()->status == UIStatus::STATUS_DISENGAGED) {
+      if (!uiState()->engaged()) {
         Params().putBool("DoShutdown", true);
       }
     }

@@ -1,3 +1,8 @@
+2022-04-27
+==========
+* openpilot 0.8.13.1
+  * NEOS 20: improved reliability
+
 2022-04-02
 ==========
 * FPv2 updates

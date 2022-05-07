@@ -61,11 +61,11 @@ class CarController():
       if (c.enabled                                          # ACC active
           and CS.car_follow == 1                             # lead car
           and CS.out.standstill                              # must be standing still
-          and CS.close_distance > 3                          # acc resume trigger low threshold
-          and CS.close_distance < 4.5                        # acc resume trigger high threshold
+          and CS.close_distance > self.p.ACC_MIN_DIST        # acc resume trigger low threshold
+          and CS.close_distance < self.p.ACC_MAX_DIST        # acc resume trigger high threshold
           and CS.close_distance > self.prev_close_distance): # distance with lead car is increasing
         self.sng_acc_resume = True
-      # Cancel ACC if stopped, brake pressed and not stopped behind another car
+      # Cancel ACC if stopped, brake pressed and no lead car
       if c.enabled and CS.out.brakePressed and CS.car_follow == 0 and CS.out.standstill:
         pcm_cancel_cmd = True
     elif CS.CP.carFingerprint in GLOBAL_CARS_SNG:
@@ -81,11 +81,12 @@ class CarController():
             and not self.manual_hold
             and CS.car_follow == 1                             # lead car
             and CS.cruise_state == 3                           # ACC HOLD (only with EPB)
-            and CS.close_distance > 3                          # acc resume trigger low threshold
-            and CS.close_distance < 4.5                        # acc resume trigger high threshold
+            and CS.close_distance > self.p.ACC_MIN_DIST        # acc resume trigger low threshold
+            and CS.close_distance < self.p.ACC_MAX_DIST        # acc resume trigger high threshold
             and CS.close_distance > self.prev_close_distance): # distance with lead car is increasing
           self.sng_acc_resume = True
       else:
+        # Send brake message with non-zero speed in standstill to avoid non-EPB ACC disengage
         if (c.enabled                                          # ACC active
               and CS.car_follow == 1                           # lead car
               and CS.out.standstill

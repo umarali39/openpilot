@@ -309,7 +309,7 @@ class CarState(CarStateBase):
       ]
       checks = [
         ("ES_DashStatus", 20),
-        ("ES_Distance", 20)
+        ("ES_Distance", 20),
       ]
 
     else:
@@ -359,7 +359,7 @@ class CarState(CarStateBase):
       ]
       checks = [
         ("ES_DashStatus", 10),
-        ("ES_LKAS_State", 10)
+        ("ES_LKAS_State", 10),
       ]
 
       if CP.carFingerprint not in [CAR.CROSSTREK_2020H, CAR.OUTBACK]:

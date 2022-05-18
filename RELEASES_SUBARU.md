@@ -1,3 +1,8 @@
+2022-05-18
+==========
+* FPv2 updates
+  * 2020 Forester Hybrid - AUDM / @aztan
+
 2022-05-09
 ==========
 * FPv2 updates

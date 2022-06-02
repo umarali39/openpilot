@@ -63,6 +63,7 @@ CAR_INFO: Dict[str, Union[SubaruCarInfo, List[SubaruCarInfo]]] = {
   CAR.LEGACY_PREGLOBAL: SubaruCarInfo("Subaru Legacy 2015-17"),
   CAR.LEGACY_PREGLOBAL_2018: SubaruCarInfo("Subaru Legacy 2018-19"),
   CAR.LEVORG_PREGLOBAL: SubaruCarInfo("Subaru Levorg 2016"),
+  CAR.OUTBACK: SubaruCarInfo("Subaru Outback 2020"),
   CAR.OUTBACK_PREGLOBAL: SubaruCarInfo("Subaru Outback 2015-17"),
   CAR.OUTBACK_PREGLOBAL_2018: SubaruCarInfo("Subaru Outback 2018-19"),
   CAR.WRX_PREGLOBAL: SubaruCarInfo("Subaru WRX 2016-18"),

@@ -1,5 +1,22 @@
 2022-06-07
 ==========
+* openpilot 0.8.14
+  * New driving model
+    * Bigger model, using both of comma three's road-facing cameras
+    * Better at cut-in detection and tight turns
+  * New driver monitoring model
+    * Tweaked network structure to improve output resolution for DSP
+    * Fixed bug in quantization aware training to reduce quantizing errors
+    * Resulted in 7x less MSE and no more random biases at runtime
+  * Added toggle to disable disengaging on the accelerator pedal
+  * comma body support
+  * Audi RS3 support thanks to jyoung8607!
+  * Hyundai Ioniq Plug-in Hybrid 2019 support thanks to sunnyhaibin!
+  * Hyundai Tucson Diesel 2019 support thanks to sunnyhaibin!
+  * Toyota Alphard Hybrid 2021 support
+  * Toyota Avalon Hybrid 2022 support
+  * Toyota RAV4 2022 support
+  * Toyota RAV4 Hybrid 2022 support
 * FPv2 updates
   * 2020 Subaru Outback 2.5i Touring / @CheckYourSix
   * 2020 Impreza / @R0B

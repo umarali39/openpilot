@@ -68,7 +68,7 @@ def get_ecu_list(logcan, sendcan, bus, extra=None, timeout=0.1, debug=False, pro
   addrs = []
   parallel_addrs = []
 
-  versions = get_attr_from_cars('FW_VERSIONS', combine_brands=False)
+  versions = get_interface_attr('FW_VERSIONS', ignore_none=True)
   if extra is not None:
     versions.update(extra)
 

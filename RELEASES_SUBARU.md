@@ -1,3 +1,7 @@
+2022-06-15
+==========
+* 2020 Forester Hybrid support / @martinl
+
 2022-06-07
 ==========
 * FPv2 updates

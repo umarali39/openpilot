@@ -31,6 +31,7 @@ non_tested_cars = [
   SUBARU.WRX_PREGLOBAL,
   SUBARU.OUTBACK,
   SUBARU.LEGACY,
+  SUBARU.FORESTER_2020H,
 ]
 
 TestRoute = namedtuple('TestRoute', ['route', 'car_model', 'segment'], defaults=(None,))

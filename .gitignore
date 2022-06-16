@@ -80,7 +80,7 @@ selfdrive/modeld/thneed/compile
 selfdrive/modeld/models/*.thneed
 
 *.bz2
-!selfdrive/test/process/replay/fakedata/*.bz2
+!selfdrive/test/process_replay/fakedata/*.bz2
 
 build/
 

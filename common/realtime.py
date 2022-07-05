@@ -1,6 +1,7 @@
 """Utilities for reading real time clocks and keeping soft real time constraints."""
 import gc
 import os
+import sys
 import time
 from collections import deque
 from typing import Optional, List, Union
@@ -30,13 +31,13 @@ class Priority:
 
 
 def set_realtime_priority(level: int) -> None:
-  if not PC:
-    os.sched_setscheduler(0, os.SCHED_FIFO, os.sched_param(level))  # type: ignore[attr-defined] # pylint: disable=no-member # noqa
+  if not PC and sys.platform.startswith("linux"):
+    os.sched_setscheduler(0, os.SCHED_FIFO, os.sched_param(level))  # type: ignore[attr-defined] # pylint: disable=no-member
 
 
 def set_core_affinity(cores: List[int]) -> None:
-  if not PC:
-    os.sched_setaffinity(0, cores)  # type: ignore[attr-defined] # pylint: disable=no-member # noqa
+  if not PC and sys.platform.startswith("linux"):
+    os.sched_setaffinity(0, cores) # type: ignore[attr-defined] # pylint: disable=no-member
 
 
 def config_realtime_process(cores: Union[int, List[int]], priority: int) -> None:

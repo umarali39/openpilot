@@ -31,6 +31,7 @@ class CarInterface(CarInterfaceBase):
       ret.enableBsm = 0x228 in fingerprint[0]
 
     #ret.dashcamOnly = candidate in PREGLOBAL_CARS
+    #CarInterfaceBase.configure_torque_tune(candidate, ret.lateralTuning)
 
     ret.steerLimitTimer = 0.4
 

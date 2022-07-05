@@ -9,7 +9,7 @@ import panda.python.uds as uds
 from cereal import car
 from selfdrive.car.fingerprints import get_interface_attr
 from selfdrive.car.isotp_parallel_query import IsoTpParallelQuery
-from selfdrive.swaglog import cloudlog
+from system.swaglog import cloudlog
 
 Ecu = car.CarParams.Ecu
 

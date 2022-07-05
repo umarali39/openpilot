@@ -65,14 +65,14 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
     },
     {
       "ManualParkingBrakeSNGToggle",
-      "Subaru Manual PB Stop and Go",
-      "Experimental feature to enable stop and go for Subaru Global models with manual handbrake. Models with electric parking brake should keep this disabled.",
+      tr("Subaru Manual PB Stop and Go"),
+      tr("Experimental feature to enable stop and go for Subaru Global models with manual handbrake. Models with electric parking brake should keep this disabled."),
       "../assets/offroad/icon_speed_limit.png",
     },
     {
       "FirmwareQueryDelay",
-      "Firmware query delay",
-      "Add 10 second delay before running FPv2 ECU firmware queries. May be needed for Subaru pre-global models",
+      tr("Firmware query delay"),
+      tr("Add 10 second delay before running FPv2 ECU firmware queries. May be needed for Subaru pre-global models"),
       "../assets/offroad/icon_speed_limit.png",
     },
 #ifdef ENABLE_MAPS

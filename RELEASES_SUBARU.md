@@ -1,3 +1,8 @@
+2022-07-05
+==========
+* Initial lateral torque control support for all subaru-community supported models / @martinl
+
+2022-06-07
 2022-06-15
 ==========
 * 2020 Forester Hybrid support / @martinl

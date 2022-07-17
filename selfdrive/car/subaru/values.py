@@ -50,17 +50,19 @@ class SubaruCarInfo(CarInfo):
 
 
 CAR_INFO: Dict[str, Union[SubaruCarInfo, List[SubaruCarInfo]]] = {
-  CAR.ASCENT: SubaruCarInfo("Subaru Ascent 2019-20", "All"),
+  CAR.ASCENT: SubaruCarInfo("Subaru Ascent 2019-21", "All"),
   CAR.IMPREZA: [
     SubaruCarInfo("Subaru Impreza 2017-19"),
     SubaruCarInfo("Subaru Crosstrek 2018-19", video_link="https://youtu.be/Agww7oE1k-s?t=26"),
+    SubaruCarInfo("Subaru XV 2018-19", video_link="https://youtu.be/Agww7oE1k-s?t=26"),
   ],
   CAR.IMPREZA_2020: [
-    SubaruCarInfo("Subaru Impreza 2020-21"),
+    SubaruCarInfo("Subaru Impreza 2020-22"),
     SubaruCarInfo("Subaru Crosstrek 2020-21"),
+    SubaruCarInfo("Subaru XV 2020-21"),
   ],
   CAR.CROSSTREK_2020H: SubaruCarInfo("Subaru Crosstrek Hybrid 2020"),
-  CAR.FORESTER: SubaruCarInfo("Subaru Forester 2019-21", "All"),
+  CAR.FORESTER: SubaruCarInfo("Subaru Forester 2019-22", "All"),
   CAR.FORESTER_2020H: SubaruCarInfo("Subaru Forester Hybrid 2020"),
   CAR.FORESTER_PREGLOBAL: SubaruCarInfo("Subaru Forester 2017-18"),
   CAR.LEGACY: SubaruCarInfo("Subaru Legacy 2020"),

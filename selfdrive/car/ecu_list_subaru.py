@@ -10,6 +10,7 @@ from cereal import car
 from selfdrive.car.fingerprints import get_interface_attr
 from selfdrive.car.isotp_parallel_query import IsoTpParallelQuery
 from system.swaglog import cloudlog
+from common.params import Params
 
 Ecu = car.CarParams.Ecu
 
@@ -147,17 +148,15 @@ if __name__ == "__main__":
 
   t = time.time()
   print("Getting vin...")
-  addr, vin = get_vin(logcan, sendcan, 1, retry=10, debug=args.debug)
-  print(f"VIN: {vin}")
-  print("Getting VIN took %.3f s" % (time.time() - t))
+  addr, vin_rx_addr, vin = get_vin(logcan, sendcan, 1, retry=10, debug=args.debug)
+  print(f'TX: {hex(addr)}, RX: {hex(vin_rx_addr)}, VIN: {vin}')
+  print(f"Getting VIN took {time.time() - t:.3f} s")
   print()
 
-  for subaru_vin in ('JF1', 'JF2', '4S3', '4S4'):
-    if vin.startswith(subaru_vin):
-      time.sleep(10.)
-      break
-
   t = time.time()
+
+  if Params().get_bool("FirmwareQueryDelay"):
+    time.sleep(10.)
   ecu_list = get_ecu_list(logcan, sendcan, 1, extra=extra, debug=args.debug, progress=True)
 
   print()

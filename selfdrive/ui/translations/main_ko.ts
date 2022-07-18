@@ -1186,22 +1186,22 @@ location set</source>
     <message>
         <location filename="../qt/offroad/settings.cc" line="69"/>
         <source>Subaru Manual PB Stop and Go</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qt/offroad/settings.cc" line="70"/>
         <source>Experimental feature to enable stop and go for Subaru Global models with manual handbrake. Models with electric parking brake should keep this disabled.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qt/offroad/settings.cc" line="75"/>
         <source>Firmware query delay</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qt/offroad/settings.cc" line="76"/>
         <source>Add 10 second delay before running FPv2 ECU firmware queries. May be needed for Subaru pre-global models</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qt/offroad/settings.cc" line="82"/>

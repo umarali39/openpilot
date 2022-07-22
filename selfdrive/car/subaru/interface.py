@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from cereal import car
-from selfdrive.car.subaru.values import CAR, PREGLOBAL_CARS
 from selfdrive.car import STD_CARGO_KG, scale_rot_inertia, scale_tire_stiffness, gen_empty_fingerprint, get_safety_config
 from selfdrive.car.interfaces import CarInterfaceBase
+from selfdrive.car.subaru.values import CAR, PREGLOBAL_CARS
+
 
 class CarInterface(CarInterfaceBase):
 
@@ -18,7 +19,9 @@ class CarInterface(CarInterfaceBase):
     elif candidate in [CAR.OUTBACK, CAR.LEGACY]:
       ret.safetyConfigs = [get_safety_config(car.CarParams.SafetyModel.subaruGen2)]
     elif candidate == CAR.CROSSTREK_2020H:
-      ret.safetyConfigs = [get_safety_config(car.CarParams.SafetyModel.subaruHybrid)]
+      ret.safetyConfigs = [get_safety_config(car.CarParams.SafetyModel.subaruCrosstrekHybrid)]
+    elif candidate == CAR.FORESTER_2020H:
+      ret.safetyConfigs = [get_safety_config(car.CarParams.SafetyModel.subaruForesterHybrid)]
     else:
       ret.safetyConfigs = [get_safety_config(car.CarParams.SafetyModel.subaru)]
 
@@ -28,8 +31,8 @@ class CarInterface(CarInterfaceBase):
       ret.enableBsm = 0x228 in fingerprint[0]
 
     #ret.dashcamOnly = candidate in PREGLOBAL_CARS
+    #CarInterfaceBase.configure_torque_tune(candidate, ret.lateralTuning)
 
-    ret.steerRateCost = 0.7
     ret.steerLimitTimer = 0.4
 
     if candidate == CAR.ASCENT:
@@ -58,7 +61,6 @@ class CarInterface(CarInterfaceBase):
       ret.centerToFront = ret.wheelbase * 0.5
       ret.steerRatio = 13
       ret.steerActuatorDelay = 0.1   # end-to-end angle controller
-      ret.steerRateCost = 1
       ret.lateralTuning.pid.kf = 0.00003
       ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 10., 20., 30.], [0., 10., 20., 30.]]
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.01, 0.05, 0.2, 0.21], [0.0010, 0.004, 0.008, 0.009]]
@@ -73,7 +75,7 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 14., 23.], [0., 14., 23.]]
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.045, 0.042, 0.20], [0.04, 0.035, 0.045]]
 
-    if candidate == CAR.FORESTER:
+    if candidate in [CAR.FORESTER, CAR.FORESTER_2020H]:
       ret.mass = 1568. + STD_CARGO_KG
       ret.wheelbase = 2.67
       ret.centerToFront = ret.wheelbase * 0.5
@@ -180,9 +182,4 @@ class CarInterface(CarInterfaceBase):
     return ret
 
   def apply(self, c):
-    hud_control = c.hudControl
-    ret = self.CC.update(c, self.CS, self.frame, c.actuators,
-                         c.cruiseControl.cancel, hud_control.visualAlert,
-                         hud_control.leftLaneVisible, hud_control.rightLaneVisible, hud_control.leftLaneDepart, hud_control.rightLaneDepart)
-    self.frame += 1
-    return ret
+    return self.CC.update(c, self.CS)

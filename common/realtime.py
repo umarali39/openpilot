@@ -1,6 +1,7 @@
 """Utilities for reading real time clocks and keeping soft real time constraints."""
 import gc
 import os
+import sys
 import time
 from collections import deque
 from typing import Optional, List, Union
@@ -8,19 +9,14 @@ from typing import Optional, List, Union
 from setproctitle import getproctitle  # pylint: disable=no-name-in-module
 
 from common.clock import sec_since_boot  # pylint: disable=no-name-in-module, import-error
-from selfdrive.hardware import PC, TICI
+from system.hardware import PC
 
 
 # time step for each process
 DT_CTRL = 0.01  # controlsd
 DT_MDL = 0.05  # model
 DT_TRML = 0.5  # thermald and manager
-
-# driver monitoring
-if TICI:
-  DT_DMON = 0.05
-else:
-  DT_DMON = 0.1
+DT_DMON = 0.05  # driver monitoring
 
 
 class Priority:
@@ -40,8 +36,9 @@ def set_realtime_priority(level: int) -> None:
 
 
 def set_core_affinity(cores: List[int]) -> None:
-  if not PC:
-    os.sched_setaffinity(0, cores)  # pylint: disable=no-member
+  if sys.platform.startswith("linux"):
+    if not PC:
+      os.sched_setaffinity(0, cores) # pylint: disable=no-member
 
 
 def config_realtime_process(cores: Union[int, List[int]], priority: int) -> None:

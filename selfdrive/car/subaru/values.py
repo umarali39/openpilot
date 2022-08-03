@@ -277,6 +277,7 @@ FW_VERSIONS = {
       b'\x1a\xf6B`\x00',
       b'\xf1\x00\xa4\x10@',
       b'\x1a\xf6b0\x00',
+      b'\x1a\xf6f`\x00',
     ],
   },
   CAR.FORESTER_2020H: {

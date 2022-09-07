@@ -418,9 +418,11 @@ class CarState(CarStateBase):
         ("Gear", "Transmission"),
       ]
 
-      checks.append(("Throttle_Hybrid", 50))
-      checks.append(("Brake_Hybrid", 40))
-      checks.append(("Transmission", 50))
+      checks = [
+        ("Throttle_Hybrid", 50),
+        ("Brake_Hybrid", 40),
+        ("Transmission", 50),
+      ]
 
       return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, 1)
 

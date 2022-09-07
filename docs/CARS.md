@@ -4,7 +4,7 @@
 
 A supported vehicle is one that just works when you install a comma three. All supported cars provide a better experience than any stock system.
 
-# 205 Supported Cars
+# 207 Supported Cars
 
 |Make|Model|Supported Package|ACC|No ACC accel below|No ALC below|Steering Torque|Harness|
 |---|---|---|:---:|:---:|:---:|:---:|:---:|
@@ -128,7 +128,9 @@ A supported vehicle is one that just works when you install a comma three. All s
 |Subaru|Ascent 2019-21|All|Stock|0 mph|0 mph|[![star](assets/icon-star-full.svg)](##)|Subaru A|
 |Subaru|Crosstrek 2018-19|EyeSight Driver Assistance|Stock|0 mph|0 mph|[![star](assets/icon-star-empty.svg)](##)|Subaru A|
 |Subaru|Crosstrek 2020-21|EyeSight Driver Assistance|Stock|0 mph|0 mph|[![star](assets/icon-star-full.svg)](##)|Subaru A|
+|Subaru|Crosstrek Hybrid 2020|EyeSight Driver Assistance|Stock|0 mph|0 mph|[![star](assets/icon-star-full.svg)](##)|Subaru A|
 |Subaru|Forester 2019-21|All|Stock|0 mph|0 mph|[![star](assets/icon-star-full.svg)](##)|Subaru A|
+|Subaru|Forester Hybrid 2020|EyeSight Driver Assistance|Stock|0 mph|0 mph|[![star](assets/icon-star-full.svg)](##)|Subaru A|
 |Subaru|Impreza 2017-19|EyeSight Driver Assistance|Stock|0 mph|0 mph|[![star](assets/icon-star-empty.svg)](##)|Subaru A|
 |Subaru|Impreza 2020-22|EyeSight Driver Assistance|Stock|0 mph|0 mph|[![star](assets/icon-star-full.svg)](##)|Subaru A|
 |Subaru|Legacy 2020-22|All|Stock|0 mph|0 mph|[![star](assets/icon-star-full.svg)](##)|Subaru B|

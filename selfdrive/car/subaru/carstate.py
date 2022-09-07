@@ -204,7 +204,7 @@ class CarState(CarStateBase):
     if CP.carFingerprint in PREGLOBAL_CARS:
       signals += [
         ("Throttle_Pedal", "Throttle"),
-        ("Counter", "Throttle"),
+        ("COUNTER", "Throttle"),
         ("Signal1", "Throttle"),
         ("Not_Full_Throttle", "Throttle"),
         ("Signal2", "Throttle"),
@@ -233,7 +233,7 @@ class CarState(CarStateBase):
 
     else:
       signals += [
-        ("Counter", "Throttle"),
+        ("COUNTER", "Throttle"),
         ("Signal1", "Throttle"),
         ("Engine_RPM", "Throttle"),
         ("Signal2", "Throttle"),
@@ -243,7 +243,7 @@ class CarState(CarStateBase):
         ("Signal1", "Throttle"),
         ("Off_Accel", "Throttle"),
 
-        ("Counter", "Brake_Pedal"),
+        ("COUNTER", "Brake_Pedal"),
         ("Signal1", "Brake_Pedal"),
         ("Speed", "Brake_Pedal"),
         ("Signal2", "Brake_Pedal"),
@@ -347,7 +347,7 @@ class CarState(CarStateBase):
 
     else:
       signals = [
-        ("Counter", "ES_DashStatus"),
+        ("COUNTER", "ES_DashStatus"),
         ("PCB_Off", "ES_DashStatus"),
         ("LDW_Off", "ES_DashStatus"),
         ("Signal1", "ES_DashStatus"),

@@ -68,7 +68,7 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 10., 20., 30.], [0., 10., 20., 30.]]
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.01, 0.05, 0.2, 0.21], [0.0010, 0.004, 0.008, 0.009]]
 
-    if candidate == CAR.CROSSTREK_2020H:
+    elif candidate == CAR.CROSSTREK_2020H:
       ret.mass = 1568. + STD_CARGO_KG
       ret.wheelbase = 2.67
       ret.centerToFront = ret.wheelbase * 0.5
@@ -134,7 +134,7 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 20.], [0., 20.]]
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.1, 0.2], [0.01, 0.02]]
 
-    if candidate == CAR.LEVORG_PREGLOBAL:
+    elif candidate == CAR.LEVORG_PREGLOBAL:
       ret.safetyConfigs[0].safetyParam = 1  # Levorg has reversed driver torque signal
       ret.mass = 1568 + STD_CARGO_KG
       ret.wheelbase = 2.67
@@ -169,7 +169,6 @@ class CarInterface(CarInterfaceBase):
   def _update(self, c):
 
     ret = self.CS.update(self.cp, self.cp_cam, self.cp_body)
-    ret.canValid = self.cp.can_valid and self.cp_cam.can_valid and (self.cp_body is None or self.cp_body.can_valid)
 
     ret.events = self.create_common_events(ret).to_msg()
 

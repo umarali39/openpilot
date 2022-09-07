@@ -194,48 +194,29 @@ class CarState(CarStateBase):
       ("Steering_Torque", 50),
     ]
 
+    if CP.enableBsm:
+      signals += [
+        ("L_ADJACENT", "BSD_RCTA"),
+        ("R_ADJACENT", "BSD_RCTA"),
+        ("L_APPROACHING", "BSD_RCTA"),
+        ("R_APPROACHING", "BSD_RCTA"),
+      ]
+      checks.append(("BSD_RCTA", 17))
+
     # Transmission is on can1 for CROSSTREK_2020H
     if CP.carFingerprint != CAR.CROSSTREK_2020H:
       signals.append(("Gear", "Transmission"))
       checks.append(("Transmission", 100))
 
-    if CP.carFingerprint in PREGLOBAL_CARS:
-      signals += [
-        ("Throttle_Pedal", "Throttle"),
-        ("COUNTER", "Throttle"),
-        ("Signal1", "Throttle"),
-        ("Not_Full_Throttle", "Throttle"),
-        ("Signal2", "Throttle"),
-        ("Engine_RPM", "Throttle"),
-        ("Off_Throttle", "Throttle"),
-        ("Signal3", "Throttle"),
-        ("Throttle_Cruise", "Throttle"),
-        ("Throttle_Combo", "Throttle"),
-        ("Throttle_Body", "Throttle"),
-        ("Off_Throttle_2", "Throttle"),
-        ("Signal4", "Throttle"),
-        ("FL", "Wheel_Speeds"),
-        ("FR", "Wheel_Speeds"),
-        ("RL", "Wheel_Speeds"),
-        ("RR", "Wheel_Speeds"),
-        ("Cruise_On", "CruiseControl"),
-        ("Cruise_Activated", "CruiseControl"),
-        ("UNITS", "Dash_State2"),
-        ("Steering_Angle", "Steering"),
-      ]
+    if CP.carFingerprint not in PREGLOBAL_CARS:
+      if CP.carFingerprint not in GLOBAL_GEN2:
+        signals += CarState.get_common_global_signals()[0]
+        checks += CarState.get_common_global_signals()[1]
 
-      checks.append(("BodyInfo", 1))
-      checks.append(("CruiseControl", 50))
-      checks.append(("Dash_State2", 1))
-      checks.append(("Steering", 50))
-      checks.append(("Wheel_Speeds", 50))
+      if CP.carFingerprint not in (GLOBAL_GEN2, CAR.CROSSTREK_2020H):
+        signals += CarState.get_global_cruisecontrol_signals()[0]
+        checks += CarState.get_global_cruisecontrol_signals()[1]
 
-      if CP.carFingerprint in [CAR.FORESTER_PREGLOBAL, CAR.LEVORG_PREGLOBAL, CAR.WRX_PREGLOBAL]:
-        checks.append(("Dashlights", 20))
-      elif CP.carFingerprint in [CAR.LEGACY_PREGLOBAL, CAR.LEGACY_PREGLOBAL_2018, CAR.OUTBACK_PREGLOBAL, CAR.OUTBACK_PREGLOBAL_2018]:
-        checks.append(("Dashlights", 10))
-
-    else:
       # global
       signals += [
         ("COUNTER", "Throttle"),
@@ -259,25 +240,49 @@ class CarState(CarStateBase):
         ("Steer_Warning", "Steering_Torque"),
         ("UNITS", "Dashlights"),
       ]
-      checks.append(("Dashlights", 10))
-      checks.append(("BodyInfo", 10))
 
-      if CP.carFingerprint not in GLOBAL_GEN2:
-        signals += CarState.get_common_global_signals()[0]
-        checks += CarState.get_common_global_signals()[1]
-
-      if CP.carFingerprint not in (GLOBAL_GEN2, CAR.CROSSTREK_2020H):
-        signals += CarState.get_global_cruisecontrol_signals()[0]
-        checks += CarState.get_global_cruisecontrol_signals()[1]
-
-    if CP.enableBsm:
-      signals += [
-        ("L_ADJACENT", "BSD_RCTA"),
-        ("R_ADJACENT", "BSD_RCTA"),
-        ("L_APPROACHING", "BSD_RCTA"),
-        ("R_APPROACHING", "BSD_RCTA"),
+      checks += [
+        ("Dashlights", 10),
+        ("BodyInfo", 10),
       ]
-      checks.append(("BSD_RCTA", 17))
+    else:
+      signals += [
+        ("Throttle_Pedal", "Throttle"),
+        ("COUNTER", "Throttle"),
+        ("Signal1", "Throttle"),
+        ("Not_Full_Throttle", "Throttle"),
+        ("Signal2", "Throttle"),
+        ("Engine_RPM", "Throttle"),
+        ("Off_Throttle", "Throttle"),
+        ("Signal3", "Throttle"),
+        ("Throttle_Cruise", "Throttle"),
+        ("Throttle_Combo", "Throttle"),
+        ("Throttle_Body", "Throttle"),
+        ("Off_Throttle_2", "Throttle"),
+        ("Signal4", "Throttle"),
+        ("FL", "Wheel_Speeds"),
+        ("FR", "Wheel_Speeds"),
+        ("RL", "Wheel_Speeds"),
+        ("RR", "Wheel_Speeds"),
+        ("UNITS", "Dash_State2"),
+        ("Cruise_On", "CruiseControl"),
+        ("Cruise_Activated", "CruiseControl"),
+        ("Steering_Angle", "Steering"),
+      ]
+
+      checks += [
+        ("Throttle", 100),
+        ("Wheel_Speeds", 50),
+        ("Dash_State2", 1),
+        ("BodyInfo", 1),
+        ("CruiseControl", 50),
+        ("Steering", 50),
+      ]
+
+      if CP.carFingerprint in [CAR.FORESTER_PREGLOBAL, CAR.LEVORG_PREGLOBAL, CAR.WRX_PREGLOBAL]:
+        checks.append(("Dashlights", 20))
+      elif CP.carFingerprint in [CAR.LEGACY_PREGLOBAL, CAR.LEGACY_PREGLOBAL_2018, CAR.OUTBACK_PREGLOBAL, CAR.OUTBACK_PREGLOBAL_2018]:
+        checks.append(("Dashlights", 10))
 
     return CANParser(DBC[CP.carFingerprint]["pt"], signals, checks, 0)
 

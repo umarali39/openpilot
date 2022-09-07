@@ -262,9 +262,9 @@ jobs:
     - uses: actions/checkout@v3
       with:
         submodules: true
+    - uses: ./.github/workflows/setup
     - name: Pull LFS
       run: git lfs pull
-    - uses: ./.github/workflows/setup
     - name: Cache test routes
       id: dependency-cache
       uses: actions/cache@v3

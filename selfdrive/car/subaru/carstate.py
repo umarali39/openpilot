@@ -217,7 +217,6 @@ class CarState(CarStateBase):
         signals += CarState.get_global_cruisecontrol_signals()[0]
         checks += CarState.get_global_cruisecontrol_signals()[1]
 
-      # global
       signals += [
         ("COUNTER", "Throttle"),
         ("Signal1", "Throttle"),

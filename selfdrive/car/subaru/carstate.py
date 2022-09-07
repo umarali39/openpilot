@@ -27,8 +27,6 @@ class CarState(CarStateBase):
     ret.gasPressed = ret.gas > 1e-5
     if self.car_fingerprint in PREGLOBAL_CARS:
       ret.brakePressed = cp.vl["Brake_Pedal"]["Brake_Pedal"] > 2
-    elif self.car_fingerprint in [CAR.OUTBACK, CAR.LEGACY]:
-      ret.brakePressed = cp_body.vl["Brake_Status"]["Brake"] == 1
     elif self.car_fingerprint == CAR.CROSSTREK_2020H:
       ret.brakePressed = cp_body.vl["Brake_Hybrid"]["Brake"] == 1
     else:
@@ -216,7 +214,12 @@ class CarState(CarStateBase):
         ("Throttle_Body", "Throttle"),
         ("Off_Throttle_2", "Throttle"),
         ("Signal4", "Throttle"),
-
+        ("FL", "Wheel_Speeds"),
+        ("FR", "Wheel_Speeds"),
+        ("RL", "Wheel_Speeds"),
+        ("RR", "Wheel_Speeds"),
+        ("Cruise_On", "CruiseControl"),
+        ("Cruise_Activated", "CruiseControl"),
         ("UNITS", "Dash_State2"),
         ("Steering_Angle", "Steering"),
       ]
@@ -225,6 +228,7 @@ class CarState(CarStateBase):
       checks.append(("CruiseControl", 50))
       checks.append(("Dash_State2", 1))
       checks.append(("Steering", 50))
+      checks.append(("Wheel_Speeds", 50))
 
       if CP.carFingerprint in [CAR.FORESTER_PREGLOBAL, CAR.LEVORG_PREGLOBAL, CAR.WRX_PREGLOBAL]:
         checks.append(("Dashlights", 20))
@@ -232,6 +236,7 @@ class CarState(CarStateBase):
         checks.append(("Dashlights", 10))
 
     else:
+      # global
       signals += [
         ("COUNTER", "Throttle"),
         ("Signal1", "Throttle"),
@@ -257,16 +262,6 @@ class CarState(CarStateBase):
       checks.append(("Dashlights", 10))
       checks.append(("BodyInfo", 10))
 
-    if CP.enableBsm:
-      signals += [
-        ("L_ADJACENT", "BSD_RCTA"),
-        ("R_ADJACENT", "BSD_RCTA"),
-        ("L_APPROACHING", "BSD_RCTA"),
-        ("R_APPROACHING", "BSD_RCTA"),
-      ]
-      checks.append(("BSD_RCTA", 17))
-
-    if CP.carFingerprint not in PREGLOBAL_CARS:
       if CP.carFingerprint not in GLOBAL_GEN2:
         signals += CarState.get_common_global_signals()[0]
         checks += CarState.get_common_global_signals()[1]
@@ -275,42 +270,14 @@ class CarState(CarStateBase):
         signals += CarState.get_global_cruisecontrol_signals()[0]
         checks += CarState.get_global_cruisecontrol_signals()[1]
 
+    if CP.enableBsm:
       signals += [
-        ("Steer_Warning", "Steering_Torque"),
-        ("UNITS", "Dashlights"),
+        ("L_ADJACENT", "BSD_RCTA"),
+        ("R_ADJACENT", "BSD_RCTA"),
+        ("L_APPROACHING", "BSD_RCTA"),
+        ("R_APPROACHING", "BSD_RCTA"),
       ]
-
-      checks += [
-        ("Dashlights", 10),
-        ("BodyInfo", 10),
-      ]
-    else:
-      signals += [
-        ("FL", "Wheel_Speeds"),
-        ("FR", "Wheel_Speeds"),
-        ("RL", "Wheel_Speeds"),
-        ("RR", "Wheel_Speeds"),
-        ("UNITS", "Dash_State2"),
-        ("Cruise_On", "CruiseControl"),
-        ("Cruise_Activated", "CruiseControl"),
-      ]
-      checks += [
-        ("Wheel_Speeds", 50),
-        ("Dash_State2", 1),
-      ]
-
-      if CP.carFingerprint == CAR.FORESTER_PREGLOBAL:
-        checks += [
-          ("Dashlights", 20),
-          ("BodyInfo", 1),
-          ("CruiseControl", 50),
-        ]
-
-      if CP.carFingerprint in (CAR.LEGACY_PREGLOBAL, CAR.OUTBACK_PREGLOBAL, CAR.OUTBACK_PREGLOBAL_2018):
-        checks += [
-          ("Dashlights", 10),
-          ("CruiseControl", 50),
-        ]
+      checks.append(("BSD_RCTA", 17))
 
     return CANParser(DBC[CP.carFingerprint]["pt"], signals, checks, 0)
 

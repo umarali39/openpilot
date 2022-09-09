@@ -40,6 +40,7 @@ def manager_init() -> None:
     ("CompletedTrainingVersion", "0"),
     ("DisengageOnAccelerator", "1"),
     ("HasAcceptedTerms", "0"),
+    ("LanguageSetting", "main_en"),
     ("OpenpilotEnabledToggle", "1"),
     ("ManualParkingBrakeSNGToggle", "0"),
     ("FirmwareQueryDelay", "0"),
@@ -49,9 +50,6 @@ def manager_init() -> None:
 
   if params.get_bool("RecordFrontLock"):
     params.put_bool("RecordFront", True)
-
-  if not params.get_bool("DisableRadar_Allow"):
-    params.delete("DisableRadar")
 
   # set unset params
   for k, v in default_params:

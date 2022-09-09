@@ -143,14 +143,11 @@ class CarController:
         self.throttle_cnt = CS.throttle_msg["COUNTER"]
 
     else:
-      if CS.CP.carFingerprint not in [CAR.CROSSTREK_2020H]:
+      if CS.CP.carFingerprint != CAR.CROSSTREK_2020H:
         if pcm_cancel_cmd and (self.frame - self.last_cancel_frame) > 0.2:
           bus = 1 if self.CP.carFingerprint in GLOBAL_GEN2 else 0
           can_sends.append(subarucan.create_es_distance(self.packer, CS.es_distance_msg, bus, pcm_cancel_cmd))
           self.last_cancel_frame = self.frame
-        # Only cancel ACC using brake_pedal for models that do not support ES_Distance
-        if pcm_cancel_cmd:
-          pcm_cancel_cmd = False
 
       if self.es_dashstatus_cnt != CS.es_dashstatus_msg["COUNTER"]:
         can_sends.append(subarucan.create_es_dashstatus(self.packer, CS.es_dashstatus_msg))

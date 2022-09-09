@@ -108,7 +108,7 @@
 <context>
     <name>DevicePanel</name>
     <message>
-        <location filename="../qt/offroad/settings.cc" line="+151"/>
+        <location filename="../qt/offroad/settings.cc" line="+163"/>
         <source>Dongle ID</source>
         <translation>Dongle ID</translation>
     </message>
@@ -540,7 +540,7 @@ trabalho definido</translation>
 <context>
     <name>PairingPopup</name>
     <message>
-        <location filename="../qt/widgets/prime.cc" line="+86"/>
+        <location filename="../qt/widgets/prime.cc" line="+88"/>
         <source>Pair your device to your comma account</source>
         <translation>Pareie seu dispositivo à sua conta comma</translation>
     </message>
@@ -1157,7 +1157,7 @@ trabalho definido</translation>
 <context>
     <name>TogglesPanel</name>
     <message>
-        <location filename="../qt/offroad/settings.cc" line="-324"/>
+        <location filename="../qt/offroad/settings.cc" line="-336"/>
         <source>Enable openpilot</source>
         <translation>Ativar openpilot</translation>
     </message>
@@ -1198,6 +1198,26 @@ trabalho definido</translation>
     </message>
     <message>
         <location line="+11"/>
+        <source>Subaru Manual PB Stop and Go</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Experimental feature to enable stop and go for Subaru Global models with manual handbrake. Models with electric parking brake should keep this disabled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Firmware query delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Add 10 second delay before running FPv2 ECU firmware queries. May be needed for Subaru pre-global models</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>🌮 End-to-end longitudinal (extremely alpha) 🌮</source>
         <translation>🌮 End-to-end longitudinal (experimental) 🌮</translation>
     </message>
@@ -1217,7 +1237,7 @@ trabalho definido</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-55"/>
+        <location line="-67"/>
         <source>Disengage On Accelerator Pedal</source>
         <translation>Desacionar Com Pedal Do Acelerador</translation>
     </message>
@@ -1227,7 +1247,7 @@ trabalho definido</translation>
         <translation>Quando ativado, pressionar o pedal do acelerador desacionará o openpilot.</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+30"/>
         <source>Show ETA in 24h Format</source>
         <translation>Mostrar ETA em formato 24h</translation>
     </message>

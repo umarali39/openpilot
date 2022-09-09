@@ -108,7 +108,7 @@
 <context>
     <name>DevicePanel</name>
     <message>
-        <location filename="../qt/offroad/settings.cc" line="+151"/>
+        <location filename="../qt/offroad/settings.cc" line="+163"/>
         <source>Dongle ID</source>
         <translation>Dongle ID</translation>
     </message>
@@ -539,7 +539,7 @@ location set</source>
 <context>
     <name>PairingPopup</name>
     <message>
-        <location filename="../qt/widgets/prime.cc" line="+86"/>
+        <location filename="../qt/widgets/prime.cc" line="+88"/>
         <source>Pair your device to your comma account</source>
         <translation>將設備與您的 comma 帳號配對</translation>
     </message>
@@ -1153,7 +1153,7 @@ location set</source>
 <context>
     <name>TogglesPanel</name>
     <message>
-        <location filename="../qt/offroad/settings.cc" line="-324"/>
+        <location filename="../qt/offroad/settings.cc" line="-336"/>
         <source>Enable openpilot</source>
         <translation>啟用 openpilot</translation>
     </message>
@@ -1193,7 +1193,7 @@ location set</source>
         <translation>上傳駕駛監控的錄像來協助我們提升駕駛監控的準確率。</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+23"/>
         <source>🌮 End-to-end longitudinal (extremely alpha) 🌮</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1213,7 +1213,7 @@ location set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-55"/>
+        <location line="-67"/>
         <source>Disengage On Accelerator Pedal</source>
         <translation>油門取消控車</translation>
     </message>
@@ -1223,28 +1223,24 @@ location set</source>
         <translation>啟用後，踩踏油門將會取消 openpilot 控制。</translation>
     </message>
     <message>
-        <location filename="../qt/offroad/settings.cc" line="64"/>
+        <location line="+5"/>
         <source>Subaru Manual PB Stop and Go</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qt/offroad/settings.cc" line="65"/>
+        <location line="+1"/>
         <source>Experimental feature to enable stop and go for Subaru Global models with manual handbrake. Models with electric parking brake should keep this disabled.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qt/offroad/settings.cc" line="70"/>
+        <location line="+5"/>
         <source>Firmware query delay</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qt/offroad/settings.cc" line="71"/>
+        <location line="+1"/>
         <source>Add 10 second delay before running FPv2 ECU firmware queries. May be needed for Subaru pre-global models</source>
         <translation></translation>
-    </message>
-    <message>
-        <source>Show ETA in 24h format</source>
-        <translation type="vanished">預計到達時間單位改用 24 小時制</translation>
     </message>
     <message>
         <location line="+18"/>

@@ -260,7 +260,7 @@ FW_VERSIONS = {
     # 2020 Crosstrek Hybrid - UDM / @revity
     # 2020 Crosstrek Hybrid - UDM / @Dave32
     # Ecu, addr, subaddr: ROM ID
-    (Ecu.esp, 0x7b0, None): [
+    (Ecu.abs, 0x7b0, None): [
       b'\xa2 \x19e\x01',
     ],
     (Ecu.eps, 0x746, None): [
@@ -315,7 +315,7 @@ FW_VERSIONS = {
     ],
   },
   CAR.FORESTER_2020H: {
-    (Ecu.esp, 0x7b0, None): [
+    (Ecu.abs, 0x7b0, None): [
       b'\xa3 \x19T\x00',
     ],
     (Ecu.eps, 0x746, None): [
@@ -395,7 +395,7 @@ FW_VERSIONS = {
     # 2018 Subaru Legacy - UDM / @Hassan
     # 2018 Subaru Legacy - UDM / @Brycey92
     # Ecu, addr, subaddr: ROM ID
-    (Ecu.esp, 0x7b0, None): [
+    (Ecu.abs, 0x7b0, None): [
       b'\x8b\x97D\x00',
       b'\x8b\x9aD\x00',
     ],
@@ -421,7 +421,7 @@ FW_VERSIONS = {
   CAR.LEVORG_PREGLOBAL: {
      # 2016 Subaru Levorg / @jpgnz
      # Ecu, addr, subaddr: ROM ID
-     (Ecu.esp, 0x7b0, None): [
+     (Ecu.abs, 0x7b0, None): [
        b'j\x9c\x92\002',
      ],
      (Ecu.eps, 0x746, None): [
@@ -545,7 +545,7 @@ FW_VERSIONS = {
     # 2018 Subaru WRX / @cferra
     # 2016 Subaru WRX / @Hexinator
     # Ecu, addr, subaddr: ROM ID
-    (Ecu.esp, 0x7b0, None): [
+    (Ecu.abs, 0x7b0, None): [
       b'\x8a\x95R\x01',
       b'j\x95R\x02',
     ],

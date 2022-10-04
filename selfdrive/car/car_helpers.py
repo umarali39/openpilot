@@ -100,7 +100,7 @@ def fingerprint(logcan, sendcan):
       cloudlog.warning("Getting VIN & FW versions")
       if Params().get_bool("FirmwareQueryDelay"):
         time.sleep(10)
-      _, vin_rx_addr, vin = get_vin(logcan, sendcan, bus)
+      vin_rx_addr, vin = get_vin(logcan, sendcan, bus)
       ecu_rx_addrs = get_present_ecus(logcan, sendcan)
       car_fw = get_fw_versions_ordered(logcan, sendcan, ecu_rx_addrs)
 

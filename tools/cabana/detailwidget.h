@@ -1,102 +1,81 @@
 #pragma once
-#include <QComboBox>
+
 #include <QDialog>
-#include <QDialogButtonBox>
 #include <QLabel>
-#include <QLineEdit>
 #include <QPushButton>
-#include <QSpinBox>
+#include <QScrollArea>
 #include <QTableWidget>
 #include <QVBoxLayout>
 #include <QWidget>
-#include <optional>
 
 #include "opendbc/can/common.h"
 #include "opendbc/can/common_dbc.h"
-#include "selfdrive/ui/qt/widgets/controls.h"
-#include "tools/cabana/parser.h"
-
-class SignalForm : public QWidget {
-  Q_OBJECT
-
- public:
-  SignalForm(const Signal &sig, QWidget *parent);
-  std::optional<Signal> getSignal();
-  QLineEdit *name, *unit, *comment, *val_desc;
-  QSpinBox *size, *msb, *lsb, *factor, *offset, *min_val, *max_val;
-  QComboBox *sign, *endianness;
-};
-
-class MessagesView : public QWidget {
-  Q_OBJECT
-
- public:
-  MessagesView(QWidget *parent);
-  void setMessages(const std::list<CanData> &data);
-  std::vector<QLabel *> messages;
-  QVBoxLayout *message_layout;
-};
+#include "tools/cabana/canmessages.h"
+#include "tools/cabana/dbcmanager.h"
+#include "tools/cabana/historylog.h"
+#include "tools/cabana/signaledit.h"
 
 class BinaryView : public QWidget {
   Q_OBJECT
 
- public:
+public:
   BinaryView(QWidget *parent);
-  void setMsg(const QString &id);
-  void setData(const QByteArray &binary);
-
-  QTableWidget *table;
-};
-
-class SignalEdit : public QWidget {
-  Q_OBJECT
-
- public:
-  SignalEdit(const QString &id, const Signal &sig, int idx, QWidget *parent);
-  void save();
-
-signals:
-  void removed();
- protected:
-  void remove();
-  QString id;
-  QString name_;
-  ElidedLabel *title;
-  SignalForm *form;
-  QWidget *edit_container;
-  QPushButton *remove_btn;
-};
-
-class DetailWidget : public QWidget {
-  Q_OBJECT
- public:
-  DetailWidget(QWidget *parent);
-  void setMsg(const QString &id);
-
- public slots:
+  void setMessage(const QString &message_id);
   void updateState();
 
- protected:
-  QLabel *name_label = nullptr;
-  QPushButton *edit_btn, *add_sig_btn;
-  QVBoxLayout *signal_edit_layout;
-  Signal *sig = nullptr;
-  MessagesView *messages_view;
+private:
   QString msg_id;
-  BinaryView *binary_view;
-  std::vector<SignalEdit *> signal_edit;
+  QTableWidget *table;
 };
 
 class EditMessageDialog : public QDialog {
   Q_OBJECT
 
- public:
-  EditMessageDialog(const QString &id, QWidget *parent);
+public:
+  EditMessageDialog(const QString &msg_id, QWidget *parent);
+
+protected:
+  void save();
+
+  QString msg_id;
+  QLineEdit *name_edit;
+  QSpinBox *size_spin;
 };
 
-class AddSignalDialog : public QDialog {
+class ScrollArea : public QScrollArea {
   Q_OBJECT
 
- public:
-  AddSignalDialog(const QString &id, QWidget *parent);
+public:
+  ScrollArea(QWidget *parent) : QScrollArea(parent) {}
+  bool eventFilter(QObject *obj, QEvent *ev) override;
+  void setWidget(QWidget *w);
+};
+
+class DetailWidget : public QWidget {
+  Q_OBJECT
+
+public:
+  DetailWidget(QWidget *parent);
+  void setMessage(const QString &message_id);
+
+signals:
+  void showChart(const QString &msg_id, const QString &sig_name);
+
+private slots:
+  void showForm();
+
+private:
+  void addSignal();
+  void editMsg();
+  void updateState();
+
+  QString msg_id;
+  QLabel *name_label, *time_label;
+  QPushButton *edit_btn;
+  QVBoxLayout *signal_edit_layout;
+  QWidget *signals_header;
+  QList<SignalEdit *> signal_forms;
+  HistoryLog *history_log;
+  BinaryView *binary_view;
+  ScrollArea *scroll;
 };

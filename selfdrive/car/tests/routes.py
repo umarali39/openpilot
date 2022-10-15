@@ -31,6 +31,8 @@ non_tested_cars = [
   SUBARU.LEVORG_PREGLOBAL,
   SUBARU.WRX_PREGLOBAL,
   SUBARU.FORESTER_2020H,
+  CHRYSLER.RAM_1500,
+  CHRYSLER.RAM_HD,
 ]
 
 CarTestRoute = namedtuple('CarTestRoute', ['route', 'car_model', 'segment'], defaults=(None,))
@@ -45,8 +47,8 @@ routes = [
   CarTestRoute("378472f830ee7395|2021-05-28--07-38-43", CHRYSLER.PACIFICA_2018_HYBRID),
   CarTestRoute("8190c7275a24557b|2020-01-29--08-33-58", CHRYSLER.PACIFICA_2019_HYBRID),
   CarTestRoute("3d84727705fecd04|2021-05-25--08-38-56", CHRYSLER.PACIFICA_2020),
-  CarTestRoute("221c253375af4ee9|2022-06-15--18-38-24", CHRYSLER.RAM_1500),
-  CarTestRoute("8fb5eabf914632ae|2022-08-04--17-28-53", CHRYSLER.RAM_HD, segment=6),
+  #CarTestRoute("221c253375af4ee9|2022-06-15--18-38-24", CHRYSLER.RAM_1500),
+  #CarTestRoute("8fb5eabf914632ae|2022-08-04--17-28-53", CHRYSLER.RAM_HD, segment=6),
 
   CarTestRoute("62241b0c7fea4589|2022-09-01--15-32-49", FORD.EXPLORER_MK6),
   #TestRoute("f1b4c567731f4a1b|2018-04-30--10-15-35", FORD.FUSION),

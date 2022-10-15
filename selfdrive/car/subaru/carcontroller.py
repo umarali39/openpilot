@@ -8,10 +8,8 @@ class CarController:
   def __init__(self, dbc_name, CP, VM):
     self.CP = CP
     self.apply_steer_last = 0
-    self.frame = 0
-
-    self.es_lkas_cnt = -1
     self.es_distance_cnt = -1
+    self.es_lkas_cnt = -1
     self.es_dashstatus_cnt = -1
     self.throttle_cnt = -1
     self.brake_pedal_cnt = -1
@@ -26,7 +24,6 @@ class CarController:
     self.prev_cruise_state = 0
     self.frame = 0
     self.last_cancel_frame = 0
-
 
     self.p = CarControllerParams(CP)
     self.packer = CANPacker(DBC[CP.carFingerprint]['pt'])

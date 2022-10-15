@@ -211,7 +211,7 @@ class CarState(CarStateBase):
         signals += CarState.get_common_global_signals()[0]
         checks += CarState.get_common_global_signals()[1]
 
-      if CP.carFingerprint not in (GLOBAL_GEN2, CAR.CROSSTREK_2020H):
+      if CP.carFingerprint not in GLOBAL_GEN2 and CP.carFingerprint != CAR.CROSSTREK_2020H:
         signals += CarState.get_global_cruisecontrol_signals()[0]
         checks += CarState.get_global_cruisecontrol_signals()[1]
 
@@ -364,7 +364,7 @@ class CarState(CarStateBase):
         ("ES_LKAS_State", 10),
       ]
 
-      if CP.carFingerprint not in (GLOBAL_GEN2, CAR.CROSSTREK_2020H):
+      if CP.carFingerprint not in GLOBAL_GEN2 and CP.carFingerprint != CAR.CROSSTREK_2020H:
         signals += CarState.get_global_es_distance_signals()[0]
         checks += CarState.get_global_es_distance_signals()[1]
 

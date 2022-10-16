@@ -112,7 +112,7 @@ class CarState(CarStateBase):
     return ret
 
   @staticmethod
-  def get_common_global_signals():
+  def get_common_global_signals(CP):
     signals = [
       ("FL", "Wheel_Speeds"),
       ("FR", "Wheel_Speeds"),
@@ -125,17 +125,14 @@ class CarState(CarStateBase):
       ("Brake_Status", 50),
     ]
 
-    return signals, checks
-
-  @staticmethod
-  def get_global_cruisecontrol_signals():
-    signals = [
-      ("Cruise_On", "CruiseControl"),
-      ("Cruise_Activated", "CruiseControl"),
-    ]
-    checks = [
-      ("CruiseControl", 20),
-    ]
+    if CP.carFingerprint != CAR.CROSSTREK_2020H:
+      signals += [
+        ("Cruise_On", "CruiseControl"),
+        ("Cruise_Activated", "CruiseControl"),
+      ]
+      checks += [
+        ("CruiseControl", 20),
+      ]
 
     return signals, checks
 
@@ -207,13 +204,9 @@ class CarState(CarStateBase):
       checks.append(("Transmission", 100))
 
     if CP.carFingerprint not in PREGLOBAL_CARS:
-      if CP.carFingerprint not in GLOBAL_GEN2:
-        signals += CarState.get_common_global_signals()[0]
-        checks += CarState.get_common_global_signals()[1]
-
       if CP.carFingerprint not in GLOBAL_GEN2 and CP.carFingerprint != CAR.CROSSTREK_2020H:
-        signals += CarState.get_global_cruisecontrol_signals()[0]
-        checks += CarState.get_global_cruisecontrol_signals()[1]
+        signals += CarState.get_common_global_signals(CP)[0]
+        checks += CarState.get_common_global_signals(CP)[1]
 
       signals += [
         ("COUNTER", "Throttle"),
@@ -373,11 +366,9 @@ class CarState(CarStateBase):
   @staticmethod
   def get_body_can_parser(CP):
     if CP.carFingerprint in GLOBAL_GEN2:
-      signals, checks = CarState.get_common_global_signals()
+      signals, checks = CarState.get_common_global_signals(CP)
       signals += CarState.get_global_es_distance_signals()[0]
       checks += CarState.get_global_es_distance_signals()[1]
-      signals += CarState.get_global_cruisecontrol_signals()[0]
-      checks += CarState.get_global_cruisecontrol_signals()[1]
       return CANParser(DBC[CP.carFingerprint]["pt"], signals, checks, 1)
 
     if CP.carFingerprint == CAR.CROSSTREK_2020H:

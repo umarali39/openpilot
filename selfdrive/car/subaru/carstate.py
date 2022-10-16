@@ -204,7 +204,7 @@ class CarState(CarStateBase):
       checks.append(("Transmission", 100))
 
     if CP.carFingerprint not in PREGLOBAL_CARS:
-      if CP.carFingerprint not in GLOBAL_GEN2 and CP.carFingerprint != CAR.CROSSTREK_2020H:
+      if CP.carFingerprint not in GLOBAL_GEN2:
         signals += CarState.get_common_global_signals(CP)[0]
         checks += CarState.get_common_global_signals(CP)[1]
 

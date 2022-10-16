@@ -1,3 +1,8 @@
+2022-10-15
+==========
+* FPv2 updates
+  * Forester 2018 / @ganny
+
 2022-09-09
 ==========
 * openpilot 0.8.16

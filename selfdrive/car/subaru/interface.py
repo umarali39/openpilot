@@ -14,7 +14,7 @@ class CarInterface(CarInterfaceBase):
 
     ret.carName = "subaru"
     ret.radarOffCan = True
-    ret.dashcamOnly = candidate in PREGLOBAL_CARS
+    #ret.dashcamOnly = candidate in PREGLOBAL_CARS
     ret.autoResumeSng = False
 
     if candidate in PREGLOBAL_CARS:
@@ -29,8 +29,6 @@ class CarInterface(CarInterfaceBase):
         ret.safetyConfigs[0].safetyParam |= Panda.FLAG_SUBARU_CROSSTREK_HYBRID
       elif candidate == CAR.FORESTER_2020H:
         ret.safetyConfigs[0].safetyParam |= Panda.FLAG_SUBARU_FORESTER_HYBRID
-
-    #ret.dashcamOnly = candidate in PREGLOBAL_CARS
 
     ret.steerLimitTimer = 0.4
     ret.steerActuatorDelay = 0.1

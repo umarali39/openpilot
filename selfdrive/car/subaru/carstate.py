@@ -90,9 +90,6 @@ class CarState(CarStateBase):
     if self.car_fingerprint in PREGLOBAL_CARS:
       self.cruise_button = cp_cam.vl["ES_Distance"]["Cruise_Button"]
       self.ready = not cp_cam.vl["ES_DashStatus"]["Not_Ready_Startup"]
-      self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
-      self.car_follow = cp_cam.vl["ES_Distance"]["Car_Follow"]
-      self.close_distance = cp_cam.vl["ES_Distance"]["Close_Distance"]
     else:
       ret.steerFaultTemporary = cp.vl["Steering_Torque"]["Steer_Warning"] == 1
       ret.cruiseState.nonAdaptive = cp_cam.vl["ES_DashStatus"]["Conventional_Cruise"] == 1
@@ -101,13 +98,13 @@ class CarState(CarStateBase):
       ret.stockFcw = cp_cam.vl["ES_LKAS_State"]["LKAS_Alert"] == 2
       self.brake_pedal_msg = copy.copy(cp.vl["Brake_Pedal"])
       self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
-      # FIXME: find ES_Distance signals for CROSSTREK_2020H
-      if self.car_fingerprint != CAR.CROSSTREK_2020H:
-        cp_es_distance = cp_body if self.car_fingerprint in GLOBAL_GEN2 else cp_cam
-        self.car_follow = cp_es_distance.vl["ES_Distance"]["Car_Follow"]
-        self.close_distance = cp_es_distance.vl["ES_Distance"]["Close_Distance"]
-        self.es_distance_msg = copy.copy(cp_es_distance.vl["ES_Distance"])
       self.es_dashstatus_msg = copy.copy(cp_cam.vl["ES_DashStatus"])
+    # FIXME: find ES_Distance signals for CROSSTREK_2020H
+    if self.car_fingerprint != CAR.CROSSTREK_2020H:
+      cp_es_distance = cp_body if self.car_fingerprint in GLOBAL_GEN2 else cp_cam
+      self.car_follow = cp_es_distance.vl["ES_Distance"]["Car_Follow"]
+      self.close_distance = cp_es_distance.vl["ES_Distance"]["Close_Distance"]
+      self.es_distance_msg = copy.copy(cp_es_distance.vl["ES_Distance"])
 
     return ret
 

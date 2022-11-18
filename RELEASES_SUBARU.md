@@ -1,3 +1,8 @@
+2022-11-18
+==========
+* FPv2 updates
+  * 2022 Outback Wilderness / @valtou
+
 2022-11-12
 ==========
 * openpilot 0.8.17

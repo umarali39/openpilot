@@ -1,3 +1,8 @@
+2022-11-27
+==========
+* FPv2 updates
+  * 2022 Forester Wilderness / @FutureGhost
+
 2022-11-18
 ==========
 * FPv2 updates

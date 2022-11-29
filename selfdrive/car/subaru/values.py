@@ -250,6 +250,7 @@ FW_VERSIONS = {
       b'\x9a\xc0\x00\x00',
       b'\n\xc0\004\000',
       b'\x9a\xc0\x04\x00',
+      b'\n\xc0\x04\x01',
     ],
     (Ecu.fwdCamera, 0x787, None): [
       b'\000\000eb\037@ \"',
@@ -257,6 +258,7 @@ FW_VERSIONS = {
       b'\x00\x00eb\x00\x00\x00\x00',
       b'\x00\x00eq\x1f@ "',
       b'\x00\x00eq\x00\x00\x00\x00',
+      b'\x00\x00e\x8f\x00\x00\x00\x00',
     ],
     (Ecu.engine, 0x7e0, None): [
       b'\xca!ap\a',
@@ -267,6 +269,7 @@ FW_VERSIONS = {
       b'\xca!a0\x07',
       b'\xca!f@\x07',
       b'\xca!fp\x07',
+      b'\xf3"f@\x07',
     ],
     (Ecu.transmission, 0x7e1, None): [
       b'\xe6\xf5\004\000\000',
@@ -276,6 +279,7 @@ FW_VERSIONS = {
       b'\xf1\x00\xa4\x10@',
       b'\xf1\x00\xd7\x10@',
       b'\xe6\xf5D0\x00',
+      b'\xe9\xf6F0\x00',
     ],
   },
   CAR.CROSSTREK_2020H: {

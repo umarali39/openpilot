@@ -435,6 +435,7 @@ FW_VERSIONS = {
     (Ecu.abs, 0x7b0, None): [
       b'\x8b\x97D\x00',
       b'\x8b\x9aD\x00',
+      b'\x9b\x97D\x00',
     ],
     (Ecu.eps, 0x746, None): [
       b'{\xb0\x00\x00',
@@ -442,17 +443,20 @@ FW_VERSIONS = {
     (Ecu.fwdCamera, 0x787, None): [
       b'\x00\x00df\x1f@ \n',
       b'\x00\x00df\x00\x00\x00\x00',
+      b'\x00\x00d\xfe\x1f@ \x15',
     ],
     (Ecu.engine, 0x7e0, None): [
       b'\xb5\"@p\a',
       b'\xb5"@P\x07',
       b'\xb5+@q\x07',
+      b'\xc4"@0\x07',
     ],
     (Ecu.transmission, 0x7e1, None): [
       b'\xbc\xf2\x00\x81\x00',
       b'\xf1\x00\xa4\x10@',
       b'\xbc\xf2\x00\x80\x00',
       b'\xbc\xfb\xc0`\x00',
+      b'\xbb\xf2\x00`\x00',
     ],
   },
   CAR.LEVORG_PREGLOBAL: {

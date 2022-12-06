@@ -2,6 +2,7 @@
 ==========
 * FPv2 updates
   * 2022 Impreza / @Frob
+  * 2019 Legacy / @jwithing
 
 2022-11-29
 ==========

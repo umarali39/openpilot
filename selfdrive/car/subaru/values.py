@@ -464,18 +464,23 @@ FW_VERSIONS = {
      # Ecu, addr, subaddr: ROM ID
      (Ecu.abs, 0x7b0, None): [
        b'j\x9c\x92\002',
+       b'\x9a\x95\x92\x00',
      ],
      (Ecu.eps, 0x746, None): [
        b'Z\xb0\000\000',
+       b'z\xb0\x00\x00',
      ],
      (Ecu.fwdCamera, 0x787, None): [
        b'\000\000c\xd3\000\000\000\000',
+       b'\x00\x00eO\x1f@ %',
      ],
      (Ecu.engine, 0x7e0, None): [
        b'\xf1\x82\xa6\000\xa1t\a',
+       b'\xcdi\xa00\x07',
      ],
      (Ecu.transmission, 0x7e1, None): [
        b'\xcb\xd9\000p\000',
+       b'\xce\xed\xf0`\x00',
      ],
   },
   CAR.OUTBACK_PREGLOBAL: {

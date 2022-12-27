@@ -104,6 +104,11 @@ class CarInterface(CarInterfaceBase):
       ret.wheelbase = 2.67
       ret.centerToFront = ret.wheelbase * 0.5
       ret.steerRatio = 20           # learned, 14 stock
+      ret.lateralTuning.init('pid')
+      ret.steerActuatorDelay = 0.1
+      ret.lateralTuning.pid.kf = 0.000039
+      ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 10., 20.], [0., 10., 20.]]
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.01, 0.05, 0.2], [0.003, 0.018, 0.025]]
 
     elif candidate == CAR.WRX_PREGLOBAL:
       ret.safetyConfigs[0].safetyParam = 1  # WRX has reversed driver torque signal
@@ -123,6 +128,10 @@ class CarInterface(CarInterfaceBase):
       ret.centerToFront = ret.wheelbase * 0.5
       ret.steerRatio = 12.5   # 14.5 stock
       ret.steerActuatorDelay = 0.15
+      ret.lateralTuning.init('pid')
+      ret.lateralTuning.pid.kf = 0.00005
+      ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 20.], [0., 20.]]
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.1, 0.2], [0.01, 0.02]]
 
     elif candidate == CAR.LEGACY_PREGLOBAL_2018:
       ret.safetyConfigs[0].safetyParam = 1  # Legacy 2018-2019 has reversed driver torque signal
@@ -153,6 +162,11 @@ class CarInterface(CarInterfaceBase):
       ret.wheelbase = 2.67
       ret.centerToFront = ret.wheelbase * 0.5
       ret.steerRatio = 20           # learned, 14 stock
+      ret.steerActuatorDelay = 0.1
+      ret.lateralTuning.init('pid')
+      ret.lateralTuning.pid.kf = 0.000039
+      ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 10., 20.], [0., 10., 20.]]
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.01, 0.05, 0.2], [0.003, 0.018, 0.025]]
 
     else:
       raise ValueError(f"unknown car: {candidate}")

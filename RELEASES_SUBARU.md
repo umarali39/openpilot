@@ -1,3 +1,7 @@
+2022-12-27
+==========
+* Restore pid tuning values for preglobal models / @martinl
+
 2022-12-06
 ==========
 * FPv2 updates
